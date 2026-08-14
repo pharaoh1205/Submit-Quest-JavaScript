@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>じゃんけんゲーム with チートモード</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- チートモードON時に背景を変化させるための専用要素。CSSで制御されます -->
+  <div class="overlay"></div>
+
+  <h1>じゃんけんゲーム</h1>
+  <p class="subtitle">普通のじゃんけん... と思いきや？</p>
+
+  <div class="button-group">
+    <button>✊ グー</button>
+    <button>✌️ チョキ</button>
+    <button>🖐 パー</button>
+  </div>
+
+  <!-- チートモードのON/OFFを切り替えるチェックボックス -->
+  <!-- JavaScriptでこのチェック状態を取得するには getElementById('cheatMode') を使います -->
+  <label>
+    <input type="checkbox" id="cheatMode"> チートモードをONにする
+  </label>
+
+  <!-- 勝敗の結果を表示するエリア -->
+  <!-- JavaScriptでここにテキストを表示するには getElementById('result') を使います -->
+  <p id="result"></p>
+
+
+  <script src="jyanken.js"></script>
+
+</body>
+</html>

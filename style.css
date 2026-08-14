@@ -1,0 +1,136 @@
+/* 基本設定 */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Outfit', sans-serif;
+  background: linear-gradient(135deg, #1e1e2f, #12121a);
+  color: #fff;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #fff;
+  text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.2);
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #aaa;
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+button {
+  padding: 0.8rem 1.5rem;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 8px;
+  background: #2c2c3d;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: #5c00ff;
+  color: #fff;
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 0 10px #5c00ff, 0 0 20px #5c00ff33;
+}
+
+#cheatMode {
+  transform: scale(1.5);
+  margin-right: 10px;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  color: #eee;
+}
+
+#result {
+  font-size: 1.6rem;
+  font-weight: bold;
+  min-height: 2em;
+  transition: all 0.3s ease;
+  /* 77行目の text-shadow は削除しました */
+}
+
+/* 勝敗の結果をネオンカラー（強力な発光演出）で表示 */
+.win { 
+  color: #fff; /* 文字自体を白にするとネオン感が出ます */
+  text-shadow: 
+    0 0 5px #57aaff,
+    0 0 10px #57aaff,
+    0 0 20px #57aaff,
+    0 0 40px #57aaff,
+    0 0 80px #57aaff;
+}
+
+.lose { 
+  color: #fff;
+  text-shadow: 
+    0 0 5px #ff5555,
+    0 0 10px #ff5555,
+    0 0 20px #ff5555,
+    0 0 40px #ff5555,
+    0 0 80px #ff5555;
+}
+
+.draw { 
+  color: #fff;
+  text-shadow: 
+    0 0 5px #00ff99,
+    0 0 10px #00ff99,
+    0 0 20px #00ff99,
+    0 0 40px #00ff99,
+    0 0 80px #00ff99;
+}
+
+/* 背景に敷かれたアニメーション用レイヤー */
+/* 通常時はグラデ背景、チートモード時にアニメが発動 */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(135deg, #1e1e2f, #12121a);
+  transition: background 1s ease;
+}
+
+/* チートモードがONになったときに適用されるアニメーション */
+/* bodyに .cheat-active がつくと .overlay にこのアニメが発動 */
+/* 背景は全体に適応させたいからbodyにつける */
+.cheat-active .overlay {
+  animation: cheatGlow 1s infinite alternate;
+}
+
+/* 背景が変化する演出（紫色） */
+@keyframes cheatGlow {
+  0%   { background: #2e003e; }
+  100% { background: #5e00a0; }
+}
